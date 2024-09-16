@@ -53,6 +53,7 @@ El circuito en la aplicación maneja 3 estados:
 El objetivo principal de estas pruebas es mostrar el funcionamiento interno en la prueba de concepto aplicando la configuración correspondiente con el patrón Circuit Breaker.
 
 ### Pasos implementados para llevar a cabo la prueba 
+- Para ver el ciclo de pruebas funcionales puede ver este [video](https://github.com/javierjmva2/EvidenciaM1DiplomadoArquitectura/blob/main/Evidencia%20Modulo%201%20Circuit%20Breaker.mp4)
 - El primer paso es obtener la información Random de un usuario (En este caso todo está funcionando correctamente):
   ![imagen](https://github.com/user-attachments/assets/ad47dedb-611d-4a4c-8386-40556451749e)
   
