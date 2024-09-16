@@ -7,7 +7,7 @@ namespace LabCircuitBreaker.Pages
 {
     public class IndexModel : PageModel
     {
-        public static string StateCircuitBreaker = "Is Open";
+        public static string StateCircuitBreaker = "Is Closed";
 
         private IRandomUserService randomUserService;
         private readonly IServiceProvider _serviceProvider;

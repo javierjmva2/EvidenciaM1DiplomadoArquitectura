@@ -55,7 +55,7 @@ static IAsyncPolicy<HttpResponseMessage> GetCircuitBreakerPolicy()
                 IndexModel.StateCircuitBreaker = "Is Half Open";
             });
         },
-        onReset: () => IndexModel.StateCircuitBreaker = "Is Open",
+        onReset: () => IndexModel.StateCircuitBreaker = "Is Closed",
         onHalfOpen: () => { } );
 }
 
