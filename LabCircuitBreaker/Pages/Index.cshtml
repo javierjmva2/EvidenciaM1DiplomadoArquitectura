@@ -1,0 +1,81 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Lab Javier Joya";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Status Circuit: <label id="lblStatus">Cargando...</label></h1>
+    <hr />
+    <button class="btn btn-primary" onclick="GetRandomUser()">
+        Get Random User
+    </button>
+    <br />
+    <hr />
+    <div id="lblError">
+    </div>
+    <div id="lblRandomUser" style="display:none">
+        <div class="row">
+            <div class="col-md-12">
+                <center>
+                    <img id="imgRandomUser" width="200px" height="200px" />
+                </center>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label>Información Personal:</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label>Nombre: <label id="lblNameRandomUser"></label></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label>Email: <label id="lblEmailRandomUser"></label></label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <label>Phone: <label id="lblPhoneRandomUser"></label></label>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function getStatusCircuit() {
+        $.get('/Index?handler=StatusCircuit').done(function (response) {
+            $('#lblStatus').html(response)
+        });
+    }
+
+    function GetRandomUser() {
+        $('#lblRandomUser').hide();
+        $('#lblError').show();
+        $('#lblError').html('Cargando...')
+        $.get('/Index?handler=RandomUser').done(function (response) {
+            $('#lblError').hide();
+            $('#lblRandomUser').show();
+            $('#imgRandomUser').prop('src', response.results[0].picture.large);
+            $('#lblNameRandomUser').html(response.results[0].name.first + ' ' + response.results[0].name.last);
+            $('#lblEmailRandomUser').html(response.results[0].email);
+            $('#lblPhoneRandomUser').html(response.results[0].phone);
+
+
+        }).fail(function (responseError) {
+            $('#lblError').html(JSON.stringify(responseError))
+        });
+    }
+
+    setInterval(function () {
+
+        getStatusCircuit();
+
+    }, 1000);
+
+
+</script>
